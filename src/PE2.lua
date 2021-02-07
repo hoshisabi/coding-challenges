@@ -1,0 +1,92 @@
+function fib (a)
+  if a == 1 then
+    return 1
+  elseif a == 2 then
+    return 2
+  else
+    return fib(a-1) + fib(a-2)
+  end
+end
+
+i = 1
+sum = 0
+repeat
+  fibret = fib(i)
+  i = i + 1
+  if (fibret % 2 == 0) then
+    sum = sum + fibret
+  end
+until fibret > 4000000
+print ("Stopped at " .. i .. " and sum was " .. sum)problem6.lua
+function sumofsquares(a)
+  sum = 0
+  for t = 1, a do
+    sum = sum + t^2
+  end
+
+  return sum
+end
+
+function squareofsums(a)
+  sum = 0
+  for t = 1, a do
+    sum = sum + t
+  end
+
+  return sum^2
+end
+
+
+sqofs = squareofsums(100)
+sofsq = sumofsquares(100)
+print ("Difference between sum of squares " .. sofsq .. " and square of sums " .
+. sqofs .. " is " .. sqofs - sofsq)problem8.lua
+numberStr = "7316717653133062491922511967442657474235534919493496983520312774506
+32623957831801698480186947885184385861560789112949495459501737958331952853208805
+51112540698747158523863050715693290963295227443043557668966489504452445231617318
+56403098711121722383113622298934233803081353362766142828064444866452387493035890
+72962904915604407723907138105158593079608667017242712188399879790879227492190169
+97208880937766572733300105336788122023542180975125454059475224352584907711670556
+01360483958644670632441572215539753697817977846174064955149290862569321978468622
+48283972241375657056057490261407972968652414535100474821663704844031998900088952
+43450658541227588666881164271714799244429282308634656748139191231628245861786645
+83591245665294765456828489128831426076900422421902267105562632111110937054421750
+69416589604080719840385096245544436298123098787992724428490918884580156166097919
+13387549920052406368991256071760605886116467109405077541002256983155200055935729
+72571636269561882670428252483600823257530420752963450"
+
+function getat(a)
+  char = string.sub(numberStr, a, a)
+  return tonumber(char)
+end
+
+function getcharsat(a)
+  return getat(a), getat(a+1), getat(a+2), getat(a+3), getat(a+4)
+end
+
+function getDataAt(a)
+  table = {prod = 1, index=a; getcharsat(a)}
+  for i = 1, 5 do
+    table.prod = table.prod * table[i]
+  end
+
+  return table
+end
+
+function printtab(tab)
+  for idx,v in pairs(tab) do
+    print (idx .. ":" .. v)
+  end
+end
+
+cand = {prod=0}
+
+for i = 1, string.len(numberStr) - 4 do
+  tab = getDataAt(i)
+
+  if (tab.prod > cand.prod) then
+    cand = tab
+  end
+end
+
+printtab(cand)
