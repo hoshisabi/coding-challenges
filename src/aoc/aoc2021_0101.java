@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.*;
-
 public class aoc2021_0101
 {
   public static int countLarger(List<Integer> depths)

@@ -43,20 +43,6 @@ public class aoc2021_0401
     }
   }
 
-  public static void main(String[] args)
-  {
-    aoc2021_0401 me = new aoc2021_0401();
-    try
-    {
-//      me.runWithFile("aoc2021_0401_testinput.txt");
-      me.runWithFile("aoc2021_0401_input.txt");
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
-  }
-
   public class BingoGame
   {
     public List<Integer> picks;
@@ -192,6 +178,20 @@ public class aoc2021_0401
         }
         System.out.println();
       }
+    }
+  }
+
+  public static void main(String[] args)
+  {
+    aoc2021_0401 me = new aoc2021_0401();
+    try
+    {
+//      me.runWithFile("aoc2021_0401_testinput.txt");
+      me.runWithFile("aoc2021_0401_input.txt");
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
     }
   }
 }
