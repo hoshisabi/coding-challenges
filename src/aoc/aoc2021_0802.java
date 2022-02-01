@@ -1,7 +1,5 @@
 package aoc;
 
-import com.sun.istack.internal.NotNull;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,7 +18,7 @@ public class aoc2021_0802
     String segments;
     int value = -1;
 
-    public Digit(@NotNull String inputSegments)
+    public Digit(String inputSegments)
     {
       Stream<String> sorted = Arrays.stream(inputSegments.split("")).sorted();
       segments = sorted.collect(Collectors.joining());
