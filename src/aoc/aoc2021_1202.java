@@ -70,20 +70,21 @@ public class aoc2021_1202
       Node leftNode = nodeMap.get(leftString);
       Node rightNode = nodeMap.get(rightString);
 
+      leftNode = getNode(leftNode, leftString);
+      rightNode = getNode(rightNode, rightString);
+
+      leftNode.addNeighbor(rightNode);
+      rightNode.addNeighbor(leftNode);
+    }
+
+    private Node getNode(Node leftNode, String leftString)
+    {
       if (leftNode == null)
       {
         leftNode = new Node(leftString);
         nodeMap.put(leftString, leftNode);
       }
-
-      if (rightNode == null)
-      {
-        rightNode = new Node(rightString);
-        nodeMap.put(rightString, rightNode);
-      }
-
-      leftNode.addNeighbor(rightNode);
-      rightNode.addNeighbor(leftNode);
+      return leftNode;
     }
 
     public Node getStartNode()
