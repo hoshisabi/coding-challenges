@@ -3,3 +3,4 @@ out/
 /lib/assertj-core-3.7.0.jar
 /src/poc/testpickle
 /src/poc/testpickle.bz
+*.jar

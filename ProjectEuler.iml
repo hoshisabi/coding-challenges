@@ -5,7 +5,7 @@
       <configuration SdkName="Kahlua" />
     </facet>
     <facet type="Python" name="Python">
-      <configuration sdkName="Python 3.7" />
+      <configuration sdkName="Python 3.10" />
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
@@ -26,7 +26,9 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Python 3.7 interpreter library" level="application" />
     <orderEntry type="library" name="assertj.core" level="project" />
+    <orderEntry type="library" name="apache.commons.lang3" level="project" />
+    <orderEntry type="library" name="Python 3.10 interpreter library" level="application" />
+    <orderEntry type="library" name="opencsv" level="project" />
   </component>
 </module>
