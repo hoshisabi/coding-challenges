@@ -15,17 +15,16 @@ xvals = [3, 1, 2, 3]
 yvals = [3, 2, 3, 1]
 rocks = 9
 
+
 def print_board(d):
-    s = "  "
-    for v in xvals:
-        s += str(v) + " "
-    s += "\n"
+    s = "  " + " ".join([str(v) for v in xvals]) + "\n"
     for x in range(4):
         s += str(yvals[x]) + " "
         for y in range(4):
             s += "O " if d[(x, y)] == 1 else ". "
         s += "\n"
     print(s)
+
 
 def main():
     problem = constraint.Problem()
@@ -43,6 +42,7 @@ def main():
         print_board(s)
 
     print(f"Exactly {len(sols)} solutions")
+
 
 if __name__ == "__main__":
     main()
