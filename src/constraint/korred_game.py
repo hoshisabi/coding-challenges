@@ -3,10 +3,10 @@
 # Korred puzzle, 9 rocks in squares, need rearranged to satisfy the rows/columns numbers
 #
 #   3 1 2 3
-# 3 . . . .
-# 2 . . . .
-# 3 . . . .
-# 1 . . . .
+# 3 O . O O
+# 2 O . . O
+# 3 O . O O
+# 1 . O . .
 
 
 import constraint
