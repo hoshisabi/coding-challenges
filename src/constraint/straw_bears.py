@@ -42,8 +42,6 @@ villagers = {
 
 # problem.addConstraint(lambda v, i: v != i, ["villager", "imposter"])
 
-problem.addVariable("villager", villagers)
-problem.addVariable("imposter", [1, 0])
+problem.addVariable("imposters", list(villagers.keys()))
 
-problem.addConstraint(ExactSumConstraint(2))
 print(problem.getSolutions())

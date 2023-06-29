@@ -27,14 +27,15 @@ problem.addConstraint(InSetConstraint({"bill"}), ["monday"])
 # Dave selected a steak house for the night before one of the follows hosted everyone at a pizza parlor
 problem.addConstraint(InSetConstraint({"dave"}), ["steak"])
 problem.addConstraint(NotInSetConstraint({"dave"}), ["friday"])
-problem.addConstraint()
+
+problem.addConstraint(lambda steakday, pizzaday, daveday, otherday:
+                        steakday == daveday and pizzaday == otherday )
+
 sols = problem.getSolutions()
-for i, sol in enumerate(sols, start=1):
+for i, sol in enumerate(sols):
     print(f"-----------{i}-----------")
     for host in hosts:
         print(f"{host}:")
         for fact in sol:
             if sol[fact] == host:
                 print(f"  {fact}")
-
-
