@@ -25,10 +25,10 @@ def main():
     problem.addConstraint(NotInSetConstraint({0}), "bg")
     problem.addConstraint(AllDifferentConstraint())
     print("BASE+BALL=GAMES")
-    for s in problem.getSolutions():
-        print(f"{s['b']}{s['a']}{s['s']}{s['e']}+"
-              f"{s['b']}{s['a']}{s['l']}{s['l']}="
-              f"{s['g']}{s['a']}{s['m']}{s['e']}{s['s']}")
+    for sol in problem.getSolutions():
+        print(f"{sol['b']}{sol['a']}{sol['s']}{sol['e']}+"
+              f"{sol['b']}{sol['a']}{sol['l']}{sol['l']}="
+              f"{sol['g']}{sol['a']}{sol['m']}{sol['e']}{sol['s']}")
 
 
 if __name__ == "__main__":
