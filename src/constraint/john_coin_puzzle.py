@@ -23,20 +23,15 @@
 from constraint import *
 
 expected_sum = 9
-total_sum_max = 28
 
 def main():
     problem = Problem()
     problem.addVariables("abcdefgh", range(1,10))
-    problem.addConstraint(MaxSumConstraint(total_sum_max), "abcdefgh")
 
-    # ABC
-    # D_E
-    # FGH
-    problem.addConstraint(lambda x, y, z: x+y+z == expected_sum, "abc")
-    problem.addConstraint(lambda x, y, z: x+y+z == expected_sum, "fgh")
-    problem.addConstraint(lambda x, y, z: x+y+z == expected_sum, "adf")
-    problem.addConstraint(lambda x, y, z: x+y+z == expected_sum, "ceh")
+    problem.addConstraint(ExactSumConstraint(expected_sum), "abc")
+    problem.addConstraint(ExactSumConstraint(expected_sum), "fgh")
+    problem.addConstraint(ExactSumConstraint(expected_sum), "adf")
+    problem.addConstraint(ExactSumConstraint(expected_sum), "ceh")
 
 
     sols = problem.getSolutions()

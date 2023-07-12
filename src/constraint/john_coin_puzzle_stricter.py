@@ -23,7 +23,6 @@
 from constraint import *
 
 expected_sum = 9
-total_sum_max = 28
 
 def main():
     problem = Problem()
