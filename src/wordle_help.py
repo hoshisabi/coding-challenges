@@ -18,8 +18,7 @@ def filter_by_color(word_to_filter) -> bool:
     if len(word_to_filter) != 5:
         return False
 
-    yl = sum(yellow.values(), [])
-
+    yl = set("".join(yellow.values()))
     for i in range(5):
         if black and word_to_filter[i] in black:
             return False
@@ -33,11 +32,11 @@ def filter_by_color(word_to_filter) -> bool:
 
 # Empty start:
 # black = ''
-# yellow = {0: [], 1: [], 2: [], 3: [], 4: []}
+# yellow = {0: '', 1: '', 2: '', 3: '', 4: ''}
 # green = {0: '', 1: '', 2: '', 3: '', 4: ''}
 
 black = ''
-yellow = {0: [], 1: [], 2: [], 3: [], 4: []}
+yellow = {0: '', 1: '', 2: '', 3: '', 4: ''}
 green = {0: '', 1: '', 2: '', 3: '', 4: ''}
 
 with open('../conf/5letter.json') as f:
