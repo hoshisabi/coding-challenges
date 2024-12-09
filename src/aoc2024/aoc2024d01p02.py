@@ -10,14 +10,9 @@ def solve_puzzle(filename):
     return find_similarity_score(left_input, right_input)
 
 # Run on test data
-# 3   4
-# 4   3
-# 2   5
-# 1   3
-# 3   9
-# 3   3
-test_result = find_similarity_score([3, 4, 2, 1, 3, 3], [4, 3, 5, 3, 9, 3])
+test_result = solve_puzzle("aoc2024d01_test_input.txt")
 print(f"Solving for test input: {test_result}")
+assert test_result == 31, "Example did not match"
 
 # Run the solution
 input_filename = "aoc2024d01_input.txt"

@@ -13,16 +13,10 @@ def solve_puzzle(filename):
     return calculate_total_distance(left_input, right_input)
 
 # Test data:
-# 3   4
-# 4   3
-# 2   5
-# 1   3
-# 3   9
-# 3   3
-test_result = calculate_total_distance([3, 4, 2, 1, 3, 3], [4, 3, 5, 3, 9, 3])
+test_result = solve_puzzle("aoc2024d01_test_input.txt")
 print(f"Solving for test input: {test_result}")
+assert test_result == 11, "Example did not match"
 
 # Run the solution
-input_filename = "aoc2024d01_input.txt"
-total_distance = solve_puzzle(input_filename)
+total_distance = solve_puzzle("aoc2024d01_input.txt")
 print(f"Total distance between location ID lists: {total_distance}")
