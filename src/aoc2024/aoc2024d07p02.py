@@ -11,31 +11,25 @@ def find_expected_result_recursive(expected, operands):
         if helper(index + 1, current * operands[index]):
             return True
         # Try concatenation
-        if helper(index + 1, int(str(current) + str(operands[index]))):
-            return True
-        return False
+        return bool(helper(index + 1, int(str(current) + str(operands[index]))))
 
     # Start the recursion with the first operand
-    if helper(1, operands[0]):
-        return expected
-    else:
-        return 0
+    return expected if helper(1, operands[0]) else 0
 
 
 def solve_puzzle(filename):
     input_data = read_from_file(filename)
-    total = 0
-    for expected, operands in input_data:
-        result = find_expected_result_recursive(expected, operands)
-        total += result
-    return total
+    return sum(
+        find_expected_result_recursive(expected, operands)
+        for expected, operands in input_data
+    )
 
 
 # Test data:
-test_result = solve_puzzle("aoc2024d07_test_input.txt")
-print(f"Sum of valid results in test data: {test_result}")
-assert test_result == 11387, "Example did not match"
+result = solve_puzzle("aoc2024d07_test_input.txt")
+print(f"Sum of valid results in test data: {result}")
+assert result == 11387, "Example did not match"
 
 # Run the solution
-total = solve_puzzle("aoc2024d07_input.txt")
-print(f"Sum of valid results in real input: {total}")
+result = solve_puzzle("aoc2024d07_input.txt")
+print(f"Sum of valid results in real input: {result}")
