@@ -1,6 +1,10 @@
 from aoc2024d07_util import *
 
+
 def find_expected_result_recursive(expected, operands):
+    if not operands:  # Check if operands are empty or null
+        return 0
+
     def helper(index, current):
         if index == len(operands):
             return current == expected
@@ -8,7 +12,7 @@ def find_expected_result_recursive(expected, operands):
         if helper(index + 1, current + operands[index]):
             return True
         # Try multiplication
-        return bool(helper(index + 1, current * operands[index]))
+        return helper(index + 1, current * operands[index])
 
     # Start the recursion with the first operand
     return expected if helper(1, operands[0]) else 0
