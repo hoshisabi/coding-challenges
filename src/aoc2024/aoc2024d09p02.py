@@ -1,6 +1,5 @@
 from aoc2024d09_util import *
 
-
 def solve_puzzle(file_name):
     block_map = read_file(file_name)
     left_pointer = 0
@@ -22,7 +21,7 @@ def solve_puzzle(file_name):
 # Test data:
 result = solve_puzzle("aoc2024d09_test_input.txt")
 print(f"Sum of valid results in test data: {result}")
-assert result == 1928, "Example did not match"
+assert result == 2858, "Example did not match"
 
 # Run the solution
 result = solve_puzzle("aoc2024d09_input.txt")

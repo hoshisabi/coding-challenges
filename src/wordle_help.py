@@ -35,9 +35,9 @@ def filter_by_color(word_to_filter) -> bool:
 # yellow = {0: '', 1: '', 2: '', 3: '', 4: ''}
 # green = {0: '', 1: '', 2: '', 3: '', 4: ''}
 
-black = ''
-yellow = {0: '', 1: '', 2: '', 3: '', 4: ''}
-green = {0: '', 1: '', 2: '', 3: '', 4: ''}
+black = 'EIOF'
+yellow = {0: 'r', 1: 'a', 2: '', 3: '', 4: 'r'}
+green = {0: 'a', 1: '', 2: 't', 3: '', 4: ''}
 
 with open('../conf/5letter.json') as f:
     valid_words = json.load(f)

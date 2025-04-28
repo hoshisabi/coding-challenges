@@ -25,3 +25,10 @@ def read_file(filename):
             block_map += [ None ]
 
     return block_map
+
+def get_checksum(block_map):
+    return sum(
+        address * block
+        for address, block in enumerate(block_map)
+        if block is not None
+    )
