@@ -1,0 +1,9 @@
+Total solutions found: 2
+1: Brass, 3
+2: Clay, 4
+3: Copper, 2
+4: Glass, 1
+1: Brass, 3
+2: Clay, 1
+3: Copper, 2
+4: Glass, 4
