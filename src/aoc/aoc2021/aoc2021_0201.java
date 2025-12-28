@@ -1,6 +1,7 @@
 package aoc2021;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -9,11 +10,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class aoc2021_0201 {
-    public static List<String> readFileStrings(String filename) throws IOException, URISyntaxException {
-        return Files.readAllLines(Paths.get(aoc2021_0201.class.getResource(filename).toURI()), Charset.defaultCharset())
-                .stream()
-                .toList();
-    }
 
     public static int navigate(List<String> directions) {
         int hor = 0;
@@ -60,15 +56,22 @@ public class aoc2021_0201 {
         return hor * depth;
     }
 
+
+    public aoc2021_0201(String filename) throws IOException, URISyntaxException {
+        URI uri = this.getClass().getResource(filename).toURI();
+        List<String> values = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+        System.out.println(navigate(values));
+    }
+
+
     static void main() {
-        List<String> values;
         try {
-            values = AocUtil.readLines("aoc-input/aoc2021_0201_input.txt");
+            new aoc2021_0201("aoc-input/aoc2021_0201_input.txt");
         } catch (Exception e) {
             e.printStackTrace();
             return;
         }
-        System.out.println(navigate(values));
     }
 }
+
 

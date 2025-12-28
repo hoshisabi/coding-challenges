@@ -176,7 +176,7 @@ public class aoc2021_1101
     }
   }
 
-  public static void main(String[] args)
+  static void main(String[] args)
   {
     try
     {

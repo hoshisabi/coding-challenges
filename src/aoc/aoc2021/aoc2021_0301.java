@@ -1,6 +1,7 @@
 package aoc2021;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -11,7 +12,9 @@ import java.util.Map;
 
 public class aoc2021_0301
 {
-  public static List<String> readFileStrings(String filename) throws IOException, URISyntaxException {
+    private final String filename;
+
+    public static List<String> readFileStrings(String filename) throws IOException, URISyntaxException {
     return Files.readAllLines(Paths.get(aoc2021_0301.class.getResource(filename).toURI()), Charset.defaultCharset())
             .stream()
             .toList();
@@ -93,16 +96,23 @@ public class aoc2021_0301
     return 0;
   }
 
+  public aoc2021_0301(String filename) throws IOException, URISyntaxException {
+      this.filename = filename;
+      URI uri = this.getClass().getResource(filename).toURI();
+    List<String> inputData = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+    System.out.println("mcb(new int[]{}) = " + mcb(inputData));
+  }
 
-  public static void main(String[] arr)
+
+  static void main(String[] arr)
   {
-      List<String> inputData = null;
       try {
-          inputData = AocUtil.readLines("aoc-input/aoc2021_0301_input.txt");
+//        String filename = "aoc-input/aoc2021_0301_testinput.txt";  //Expected: 198
+        String filename = "aoc-input/aoc2021_0301_input.txt";
+        aoc2021_0301 me = new aoc2021_0301(filename);
       } catch (Exception e) {
           e.printStackTrace();
       }
-      System.out.println("mcb(new int[]{}) = " + mcb(inputData));
   }
 }
 

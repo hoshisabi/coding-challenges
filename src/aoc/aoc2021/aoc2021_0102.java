@@ -1,5 +1,11 @@
 package aoc2021;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @SuppressWarnings("CallToPrintStackTrace")
@@ -20,12 +26,18 @@ public class aoc2021_0102 {
         return largerCount;
     }
 
+    public aoc2021_0102(String filename) throws IOException, URISyntaxException {
+        URI uri = this.getClass().getResource(filename).toURI();
+        List<String> lines = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+        int result = countLarger(lines.stream().map(Integer::parseInt).toList());
+        System.out.println("Result: " + result);
+    }
+
+
     public static void main(String[] args) {
         String filename = "aoc-input/aoc2021_0101_input.txt";
         try {
-            var depths = AocUtil.readIntegers(filename);
-            int result = countLarger(depths);
-            System.out.println("Result: " + result);
+            new aoc2021_0102(filename);
 
         } catch (Exception e) {
             System.err.println("Could not read file: " + filename);

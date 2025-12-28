@@ -7,44 +7,37 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class aoc2021_0101
 {
-  public static int countLarger(List<Integer> depths)
-  {
-    int largerCount = 0;
-    Integer lastCount = depths.get(0);
-    for (Integer depth : depths)
-    {
-      if (lastCount < depth)
-      {
-        largerCount++;
-      }
-      lastCount = depth;
-    }
-    return largerCount;
-  }
-
-    public static List<Integer> readFileIntegers(String filename) throws IOException, URISyntaxException {
-        return Files.readAllLines(Paths.get(aoc2021_0101.class.getResource(filename).toURI()), Charset.defaultCharset())
-                .stream()
-                .map(Integer::valueOf)
-                .toList();
+    public static int countLarger(List<Integer> depths) {
+        int largerCount = 0;
+        Integer lastCount = depths.get(0);
+        for (Integer depth : depths) {
+            if (lastCount < depth) {
+                largerCount++;
+            }
+            lastCount = depth;
+        }
+        return largerCount;
     }
 
-  public static void main(String[] args)
-  {
-    try
-    {
-      List<Integer> integers = AocUtil.readIntegers("aoc-input/aoc2021_0101_input.txt");
-      int countLarger = aoc2021_0101.countLarger(integers);
-      System.out.println("countLarger = " + countLarger);
+    public aoc2021_0101(String filename) throws IOException, URISyntaxException {
+        URI uri = this.getClass().getResource(filename).toURI();
+        List<String> lines = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+        int i = countLarger(lines.stream().map(Integer::parseInt).toList());
+        System.out.println("i = " + i);
     }
-    catch (Exception e)
-    {
-      e.printStackTrace();
+
+
+    static void main(String[] args) {
+        try {
+//      aoc2021_0101 me = new aoc2021_0101("aoc-input/aoc2021_0101_testinput.txt");
+            new aoc2021_0101("aoc-input/aoc2021_0101_input.txt");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-  }
+
+
 }
-
