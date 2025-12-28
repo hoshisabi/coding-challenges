@@ -1,12 +1,8 @@
 package aoc2021;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class aoc2021_0102 {
 
     public static int countLarger(List<Integer> depths) {
@@ -25,25 +21,14 @@ public class aoc2021_0102 {
     }
 
     public static void main(String[] args) {
-        // Path relative to your project root where you moved the files
-        Path inputPath = Paths.get("aoc-input/aoc2021_0101_input.txt");
-
+        String filename = "aoc-input/aoc2021_0101_input.txt";
         try {
-            // Read all lines, convert to Integers
-            List<Integer> depths = Files.lines(inputPath)
-                    .map(String::trim)
-                    .filter(line -> !line.isEmpty())
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-
+            var depths = aoc2021_0101.readFileIntegers(filename);
             int result = countLarger(depths);
             System.out.println("Result: " + result);
 
-        } catch (IOException e) {
-            System.err.println("Could not read file: " + inputPath.toAbsolutePath());
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.err.println("Error parsing integer from file.");
+        } catch (Exception e) {
+            System.err.println("Could not read file: " + filename);
             e.printStackTrace();
         }
     }

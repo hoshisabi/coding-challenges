@@ -26,20 +26,18 @@ public class aoc2021_0101
     return largerCount;
   }
 
-  public static List<Integer> readFile(String filename) throws IOException, URISyntaxException
-  {
-    URI uri = aoc2021_0101.class.getResource(filename).toURI();
-    List<String> strings = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
-    List<Integer> valueList = strings.stream().map(l -> Integer.valueOf(l)).collect(Collectors.toList());
-    return valueList;
-  }
-
+    public static List<Integer> readFileIntegers(String filename) throws IOException, URISyntaxException {
+        return Files.readAllLines(Paths.get(aoc2021_0101.class.getResource(filename).toURI()), Charset.defaultCharset())
+                .stream()
+                .map(Integer::valueOf)
+                .toList();
+    }
 
   public static void main(String[] args)
   {
     try
     {
-      List<Integer> integers = aoc2021_0101.readFile("aoc-input/aoc2021_0101_input.txt");
+      List<Integer> integers = aoc2021_0101.readFileIntegers("aoc-input/aoc2021_0101_input.txt");
       int countLarger = aoc2021_0101.countLarger(integers);
       System.out.println("countLarger = " + countLarger);
     }
