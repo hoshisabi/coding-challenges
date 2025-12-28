@@ -45,8 +45,8 @@ def solve(data, stopat):
 
 
 if __name__ == '__main__':
-    # data, expected1, expected2 = get_data("aoc2025-02.txt"), 23701357374, 34284458938
-    data, expected1, expected2 = get_data("aoc2025-02-test.txt"), 1227775554, 4174379265
+    data, expected1, expected2 = get_data("input/aoc2025-02.txt"), 23701357374, 34284458938
+    # data, expected1, expected2 = get_data("input/aoc2025-02-test.txt"), 1227775554, 4174379265
 
     part1 = solve(data, 2)
     part2 = solve(data, None)

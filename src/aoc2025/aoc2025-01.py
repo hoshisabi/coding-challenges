@@ -1,5 +1,3 @@
-import sys
-
 def get_data(fname):
     lines = None
     with open(fname) as f:
@@ -33,8 +31,8 @@ def solve(data):
     return part1_zeros, part2_zeros, dial_pos
 
 if __name__ == '__main__':
-    data = get_data("aoc2025-01.txt")
-    # data = get_data("aoc2025-01-test.txt")
+    # data = get_data("input/aoc2025-01.txt")
+    data = get_data("input/aoc2025-01-test.txt")
     # data = ["L50"]
     print(solve(data))
 
