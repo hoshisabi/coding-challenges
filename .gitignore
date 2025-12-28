@@ -6,3 +6,7 @@ out/
 *.jar
 *.iml
 /.venv/
+
+# The sites would prefer that you don't check in their input: You can download them from the sites and place them here.
+**/aoc-input/
+**/pe-input/
