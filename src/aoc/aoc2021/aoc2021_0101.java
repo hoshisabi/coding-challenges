@@ -37,7 +37,7 @@ public class aoc2021_0101
   {
     try
     {
-      List<Integer> integers = aoc2021_0101.readFileIntegers("aoc-input/aoc2021_0101_input.txt");
+      List<Integer> integers = AocUtil.readIntegers("aoc-input/aoc2021_0101_input.txt");
       int countLarger = aoc2021_0101.countLarger(integers);
       System.out.println("countLarger = " + countLarger);
     }
@@ -47,3 +47,4 @@ public class aoc2021_0101
     }
   }
 }
+

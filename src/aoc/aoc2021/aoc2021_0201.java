@@ -63,7 +63,7 @@ public class aoc2021_0201 {
     static void main() {
         List<String> values;
         try {
-            values = readFileStrings("aoc-input/aoc2021_0201_input.txt");
+            values = AocUtil.readLines("aoc-input/aoc2021_0201_input.txt");
         } catch (Exception e) {
             e.printStackTrace();
             return;
@@ -71,3 +71,4 @@ public class aoc2021_0201 {
         System.out.println(navigate(values));
     }
 }
+

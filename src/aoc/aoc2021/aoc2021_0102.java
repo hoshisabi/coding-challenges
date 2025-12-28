@@ -23,7 +23,7 @@ public class aoc2021_0102 {
     public static void main(String[] args) {
         String filename = "aoc-input/aoc2021_0101_input.txt";
         try {
-            var depths = aoc2021_0101.readFileIntegers(filename);
+            var depths = AocUtil.readIntegers(filename);
             int result = countLarger(depths);
             System.out.println("Result: " + result);
 

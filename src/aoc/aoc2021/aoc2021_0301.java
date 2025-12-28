@@ -98,10 +98,11 @@ public class aoc2021_0301
   {
       List<String> inputData = null;
       try {
-          inputData = readFileStrings("aoc-input/aoc2021_0301_input.txt");
+          inputData = AocUtil.readLines("aoc-input/aoc2021_0301_input.txt");
       } catch (Exception e) {
           e.printStackTrace();
       }
       System.out.println("mcb(new int[]{}) = " + mcb(inputData));
   }
 }
+
