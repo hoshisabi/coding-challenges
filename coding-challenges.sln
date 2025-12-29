@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC.Year2025", "src\aoc\aoc-csharp\AoC.Year2025\AoC.Year2025.csproj", "{8083FC46-0B55-4BDA-830D-A78DF8456E9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC.Year2025", "src\aoc\aoc_csharp\AoC.Year2025\AoC.Year2025.csproj", "{8083FC46-0B55-4BDA-830D-A78DF8456E9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC.Shared", "src\aoc\aoc-csharp\AoC.Shared\AoC.Shared.csproj", "{11B1FA69-F212-4053-B29D-538FA7814EFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC.Shared", "src\aoc\aoc_csharp\AoC.Shared\AoC.Shared.csproj", "{11B1FA69-F212-4053-B29D-538FA7814EFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

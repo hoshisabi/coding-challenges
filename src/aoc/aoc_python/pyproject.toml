@@ -1,0 +1,11 @@
+[project]
+name = "aoc-python"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = ["requests"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aoc_shared*", "aoc_20*"] # This finds all year folders and shared tools

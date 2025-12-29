@@ -1,13 +1,8 @@
 [project]
-name = "coding-challenges"
+name = "pe"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.14"
 dependencies = [
     "requests>=2.32.5",
-]
-
-[tool.uv.workspace]
-members = [
-    "src/aoc/aoc_python",
 ]
