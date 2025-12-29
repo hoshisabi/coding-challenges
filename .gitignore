@@ -1,12 +1,38 @@
-out/
+# --- General ---
+.env
 .idea/
-/lib/
+data/
+out/
+output/
+
+# --- C# / .NET ---
+bin/
+obj/
+*.user
+*.suo
+*.sln.DotSettings.user
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.pytest_cache/
+
+# --- Java ---
+*.class
+*.log
+*.ctxt
+*.mtj.tmp/
+*.jar
+*.war
+*.ear
+/target/
+.gradle/
+build/
+
 /src/poc/testpickle
 /src/poc/testpickle.bz
-*.jar
-*.iml
-/.venv/
-output/
 
 # The sites would prefer that you don't check in their input: You can download them from the sites and place them here.
 **/aoc-input/
