@@ -1,18 +1,15 @@
-package aoc2021;
+package aoc_2021;
+
+import aoc_shared.DataLoader;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
-public class aoc2021_0101
-{
+public class aoc2021_0101 {
     public static int countLarger(List<Integer> depths) {
         int largerCount = 0;
-        Integer lastCount = depths.get(0);
+        Integer lastCount = depths.getFirst();
         for (Integer depth : depths) {
             if (lastCount < depth) {
                 largerCount++;
@@ -22,9 +19,8 @@ public class aoc2021_0101
         return largerCount;
     }
 
-    public aoc2021_0101(String filename) throws IOException, URISyntaxException {
-        URI uri = this.getClass().getResource(filename).toURI();
-        List<String> lines = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+    public aoc2021_0101(boolean isTest) throws IOException, URISyntaxException {
+        List<String> lines = DataLoader.loadInput(2021, 1, 1, isTest);
         int i = countLarger(lines.stream().map(Integer::parseInt).toList());
         System.out.println("i = " + i);
     }
@@ -32,8 +28,8 @@ public class aoc2021_0101
 
     static void main(String[] args) {
         try {
-//      aoc2021_0101 me = new aoc2021_0101("aoc-input/aoc2021_0101_testinput.txt");
-            new aoc2021_0101("aoc-input/aoc2021_0101_input.txt");
+//      aoc2021_0101 me = new aoc2021_0101(true);
+            new aoc2021_0101(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

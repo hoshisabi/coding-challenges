@@ -1,4 +1,6 @@
-package aoc2021;
+package aoc_2021;
+
+import aoc_shared.DataLoader;
 
 import java.io.IOException;
 import java.net.URI;
@@ -26,22 +28,10 @@ public class aoc2021_0102 {
         return largerCount;
     }
 
-    public aoc2021_0102(String filename) throws IOException, URISyntaxException {
-        URI uri = this.getClass().getResource(filename).toURI();
-        List<String> lines = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
+    static void main(String[] args)
+    {
+        List<String> lines = DataLoader.loadInput(2021, 1, 2, true);
         int result = countLarger(lines.stream().map(Integer::parseInt).toList());
-        System.out.println("Result: " + result);
-    }
-
-
-    public static void main(String[] args) {
-        String filename = "aoc-input/aoc2021_0101_input.txt";
-        try {
-            new aoc2021_0102(filename);
-
-        } catch (Exception e) {
-            System.err.println("Could not read file: " + filename);
-            e.printStackTrace();
-        }
+        System.out.println("result = " + result);
     }
 }

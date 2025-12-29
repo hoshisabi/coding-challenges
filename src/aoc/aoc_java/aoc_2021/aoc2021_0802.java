@@ -1,4 +1,6 @@
-package aoc2021;
+package aoc_2021;
+
+import aoc_shared.DataLoader;
 
 import java.io.IOException;
 import java.net.URI;
@@ -262,10 +264,8 @@ public class aoc2021_0802
     }
   }
 
-  public aoc2021_0802(String filename) throws IOException, URISyntaxException
+  public aoc2021_0802(List<String> strings )
   {
-    URI uri = this.getClass().getResource(filename).toURI();
-    List<String> strings = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
     System.out.println(strings);
 
     int sum = 0;
@@ -294,14 +294,7 @@ public class aoc2021_0802
 
   public static void main(String[] args)
   {
-    try
-    {
-//      aoc2021_0802 me = new aoc2021_0802("aoc-input/aoc2021_0801_testinput.txt");
-      aoc2021_0802 me = new aoc2021_0802("aoc-input/aoc2021_0801_input.txt");
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
+    List<String> lines = DataLoader.loadInput(2021, 8, 2, false);
+    aoc2021_0802 me = new aoc2021_0802(lines);
   }
 }

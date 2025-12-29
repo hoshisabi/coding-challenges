@@ -1,4 +1,6 @@
-package aoc2021;
+package aoc_2021;
+
+import aoc_shared.DataLoader;
 
 import java.io.IOException;
 import java.net.URI;
@@ -75,11 +77,9 @@ public class aoc2021_1001
     }
   }
 
-  public aoc2021_1001(String filename) throws IOException, URISyntaxException
+  public aoc2021_1001(List<String> lines)
   {
     Deque<BracketType> bracketStack = new ArrayDeque<>();
-    URI uri = this.getClass().getResource(filename).toURI();
-    List<String> lines = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
     int lineNumber = 0;
     int totalCorruption = 0;
     List<Long> incompleteScores = new ArrayList<>();
@@ -127,14 +127,7 @@ public class aoc2021_1001
 
   public static void main(String[] args)
   {
-    try
-    {
-//      aoc2021_1001 me = new aoc2021_1001("aoc-input/aoc2021_1001_testinput.txt");
-      aoc2021_1001 me = new aoc2021_1001("aoc-input/aoc2021_1001_input.txt");
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
+    List<String> lines = DataLoader.loadInput(2021, 10, 1, false);
+    aoc2021_1001 me = new aoc2021_1001(lines);
   }
 }

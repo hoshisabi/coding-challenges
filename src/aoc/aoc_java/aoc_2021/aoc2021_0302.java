@@ -1,4 +1,6 @@
-package aoc2021;
+package aoc_2021;
+
+import aoc_shared.DataLoader;
 
 import java.io.IOException;
 import java.net.URI;
@@ -77,25 +79,13 @@ public class aoc2021_0302
     System.out.println("carbonDioxide = " + carbonDioxide);
     System.out.println("Multiplied: " + oxygen * carbonDioxide);
 
-    return 0;
+    return oxygen * carbonDioxide;
   }
-
-  public aoc2021_0302(String filename) throws IOException, URISyntaxException {
-    URI uri = this.getClass().getResource(filename).toURI();
-    List<String> inputData = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
-    System.out.println("mcb(new int[]{}) = " + mcb(inputData));
-  }
-
 
   static void main(String[] arr)
   {
-    try {
-//        String filename = "aoc-input/aoc2021_0301_testinput.txt";  //Expected: 198
-      String filename = "aoc-input/aoc2021_0301_input.txt";
-      aoc2021_0302 me = new aoc2021_0302(filename);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    List<String> lines = DataLoader.loadInput(2021, 3, 2, false);
+    System.out.println("mcb(new int[]{}) = " + mcb(lines));
   }
 
 }

@@ -1,4 +1,6 @@
-package aoc2021;
+package aoc_2021;
+
+import aoc_shared.DataLoader;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,15 +14,6 @@ import java.util.Map;
 
 public class aoc2021_0301
 {
-    private final String filename;
-
-    public static List<String> readFileStrings(String filename) throws IOException, URISyntaxException {
-    return Files.readAllLines(Paths.get(aoc2021_0301.class.getResource(filename).toURI()), Charset.defaultCharset())
-            .stream()
-            .toList();
-  }
-
-
   public static void incrCountMap(Map<Integer, Integer> countMap, int i)
   {
     Integer newCount = countMap.get(i);
@@ -93,26 +86,13 @@ public class aoc2021_0301
     System.out.println(epsilon);
     System.out.println("Multiplied: " + gamma * epsilon);
 
-    return 0;
+    return gamma * epsilon;
   }
-
-  public aoc2021_0301(String filename) throws IOException, URISyntaxException {
-      this.filename = filename;
-      URI uri = this.getClass().getResource(filename).toURI();
-    List<String> inputData = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
-    System.out.println("mcb(new int[]{}) = " + mcb(inputData));
-  }
-
 
   static void main(String[] arr)
   {
-      try {
-//        String filename = "aoc-input/aoc2021_0301_testinput.txt";  //Expected: 198
-        String filename = "aoc-input/aoc2021_0301_input.txt";
-        aoc2021_0301 me = new aoc2021_0301(filename);
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
+    List<String> lines = DataLoader.loadInput(2021, 3, 1, false);
+    System.out.println("mcb(new int[]{}) = " + mcb(lines));
   }
 }
 

@@ -52,30 +52,17 @@ def load_input(year: int, day: int, part: int = 1, is_test: bool = False):
     search_patterns = []
 
     if is_test:
-        # 1. Specific Part & Test (Matches 2024 Day 3/17 p01/p02)
         search_patterns.append(f"aoc{year}d{day:02d}p{part:02d}_test_input.txt")
-        search_patterns.append(f"aoc{year}-{day:02d}-{part:02d}-test.txt")
-
-        # 2. Year_DayDay_TestInput (Matches your 2021 files: aoc2021_1201_testinput.txt)
-        # Note: 2021 used day + day again? i.e. 1201 for day 12.
-        search_patterns.append(f"aoc{year}_{day:02d}01_testinput.txt")
-
-        # 3. Standard Test variations (Matches 2025/2024: aoc2025-01-test.txt)
-        search_patterns.append(f"aoc{year}-{day:02d}-test.txt")
-        search_patterns.append(f"aoc{year}-{day:02d}-testinput.txt")
         search_patterns.append(f"aoc{year}d{day:02d}_test_input.txt")
         search_patterns.append(f"aoc{year}d{day:02d}_test.txt")
+        search_patterns.append(f"aoc{year}-{day:02d}-{part:02d}-test.txt")
+        search_patterns.append(f"aoc{year}-{day:02d}-test.txt")
+        search_patterns.append(f"aoc{year}-{day:02d}-testinput.txt")
     else:
-        # 1. Standard Input (Matches 2025/2024: aoc2025-01.txt)
-        search_patterns.append(f"aoc{year}-{day:02d}.txt")
-        search_patterns.append(f"aoc{year}-{day:02d}-input.txt")
-
-        # 2. dXX_input (Matches 2024 Day 17: aoc2024d17_input.txt)
         search_patterns.append(f"aoc{year}d{day:02d}_input.txt")
         search_patterns.append(f"aoc{year}d{day:02d}.txt")
-
-        # 3. Year_DayDay_input (Matches 2021: aoc2021_1201_input.txt)
-        search_patterns.append(f"aoc{year}_{day:02d}01_input.txt")
+        search_patterns.append(f"aoc{year}-{day:02d}.txt")
+        search_patterns.append(f"aoc{year}-{day:02d}-input.txt")
 
     for pattern in search_patterns:
         path = year_dir / pattern

@@ -1,4 +1,6 @@
-package aoc2021;
+package aoc_2021;
+
+import aoc_shared.DataLoader;
 
 import java.io.IOException;
 import java.net.URI;
@@ -143,10 +145,8 @@ public class aoc2021_0501
     }
   }
 
-  public aoc2021_0501(String filename) throws IOException, URISyntaxException
+  public aoc2021_0501(List<String> strings)
   {
-    URI uri = this.getClass().getResource(filename).toURI();
-    List<String> strings = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
     System.out.println(strings);
 
     Grid grid = new Grid();
@@ -162,19 +162,11 @@ public class aoc2021_0501
 
 
     System.out.println("Intersection count: " + grid.getIntersectionCount());
-
   }
 
   public static void main(String[] args)
   {
-    try
-    {
-//      aoc2021_0501 me = new aoc2021_0501("aoc-input/aoc2021_0501_testinput.txt");
-      aoc2021_0501 me = new aoc2021_0501("aoc-input/aoc2021_0501_input.txt");
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
+    List<String> lines = DataLoader.loadInput(2021, 5, 1, false);
+    aoc2021_0501 me = new aoc2021_0501(lines);
   }
 }

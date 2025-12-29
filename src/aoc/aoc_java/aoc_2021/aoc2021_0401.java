@@ -1,11 +1,7 @@
-package aoc2021;
+package aoc_2021;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import aoc_shared.DataLoader;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +9,13 @@ import java.util.stream.Collectors;
 
 public class aoc2021_0401
 {
-  public void runWithFile(String filename) throws URISyntaxException, IOException
+  public void run(List<String> input)
   {
-    URI uri = this.getClass().getResource(filename).toURI();
-    List<String> strings = Files.readAllLines(Paths.get(uri), Charset.defaultCharset());
-    BingoGame game = new BingoGame(strings);
+    BingoGame game = new BingoGame(input);
     System.out.println(game.picks);
 
     List<BingoBoard> boards = game.getBoards();
 
-    boolean won = false;
     for (Integer pick : game.picks)
     {
       System.out.println("==============");
@@ -36,7 +29,6 @@ public class aoc2021_0401
         board.printBoard();
         if (board.isWon())
         {
-          won = true;
           System.out.println("Won?" + board.isWon() + " Sum: " + board.getSum() + " Score: " + board.getSum() * pick);
         }
       }
@@ -183,15 +175,8 @@ public class aoc2021_0401
 
   public static void main(String[] args)
   {
+    List<String> lines = DataLoader.loadInput(2021, 4, 1, true);
     aoc2021_0401 me = new aoc2021_0401();
-    try
-    {
-//      me.runWithFile("aoc-input/aoc2021_0401_testinput.txt");
-      me.runWithFile("aoc-input/aoc2021_0401_input.txt");
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
+    me.run(lines);
   }
 }
