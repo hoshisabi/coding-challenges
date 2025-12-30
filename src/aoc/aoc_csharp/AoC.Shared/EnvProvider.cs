@@ -8,23 +8,21 @@ public static class EnvProvider
     {
         if (_dataPath != null) return _dataPath;
 
-        // 1. Find the .env file by walking up from the executable
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir != null && !File.Exists(Path.Combine(dir.FullName, ".env")))
+        var dir = Environment.GetEnvironmentVariable("AOC_DATA_PATH")?.Trim();
+        
+        if (string.IsNullOrEmpty(dir))
         {
-            dir = dir.Parent;
+            throw new InvalidOperationException(
+                "AOC_DATA_PATH environment variable not set! " +
+                "Check your .env file or IDE Run Configuration.");
         }
 
-        if (dir == null) throw new Exception("Could not find .env file at Git Root!");
+        if (!Directory.Exists(dir))
+        {
+            throw new DirectoryNotFoundException($"AOC_DATA_PATH is set to '{dir}', but that directory does not exist.");
+        }
 
-        // 2. Simple parser for AOC_DATA_PATH=...
-        var envLine = File.ReadLines(Path.Combine(dir.FullName, ".env"))
-            .FirstOrDefault(l => l.StartsWith("AOC_DATA_PATH="));
-
-        _dataPath = envLine?.Split('=')[1].Trim() 
-                    ?? throw new Exception("AOC_DATA_PATH not defined in .env");
-
+        _dataPath = dir;
         return _dataPath;
     }
-
 }

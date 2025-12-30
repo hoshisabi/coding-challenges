@@ -1,12 +1,5 @@
 from aoc_shared.aoc_tools import load_input
 
-def get_data(fname):
-    lines = None
-    with open(fname) as f:
-        lines = f.readlines()
-    return lines
-
-
 def solve(data):
     dial_pos = 50
     part1_zeros = 0

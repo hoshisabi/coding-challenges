@@ -1,16 +1,8 @@
 ﻿from aoc_shared.aoc_tools import load_input
-
-def get_data(fname):
-    lines = None
-    with open(fname) as f:
-        lines = f.readlines()
-    return lines
-
 def is_invalid_pieces(id, pieces):
     # only check when the string is divisible by this amount
     if len(id) % pieces != 0:
         return False
-
     # Check to see if the string is made up only of the fragment fully repeated
     frag_len = len(id) // pieces
     id_frag = id[0:frag_len]
@@ -19,18 +11,19 @@ def is_invalid_pieces(id, pieces):
         return True
     return False
 
-
-def is_invalid(id):
-    for n in range(2, len(id) + 1):
+def is_invalid(id, maxLength):
+    if not maxLength:
+        maxLength = len(id)
+    for n in range(2, maxLength + 1):
         if is_invalid_pieces(id, n):
             return True
     return False
 
-def count_invalid_for_range(left, right):
-    count = sum(range_id for range_id in range(left, right + 1) if is_invalid(str(range_id)))
+def count_invalid_for_range(left, right, stopat):
+    count = sum(range_id for range_id in range(left, right + 1) if is_invalid(str(range_id), stopat))
     return count
 
-def solve(data, stopat):
+def solve(data, maxLength):
     count = 0
     for line in data:
         idlist = line.strip().split(",")
@@ -40,12 +33,12 @@ def solve(data, stopat):
             else:
                 left, right = id.split("-")
                 if left and right:
-                    count += count_invalid_for_range(int(left), int(right))
+                    count += count_invalid_for_range(int(left), int(right), maxLength)
     return count
 
 
 if __name__ == '__main__':
-    data = load_input(2025, 2, is_test=True)
+    data = load_input(2025, 2, is_test=False)
 
     print("Day 2")
     part1 = solve(data, 2)

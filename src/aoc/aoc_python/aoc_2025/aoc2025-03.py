@@ -1,11 +1,5 @@
 ﻿from aoc_shared.aoc_tools import load_input
 
-def get_data(fname):
-    lines = None
-    with open(fname) as f:
-        lines = f.readlines()
-    return lines
-
 def solve_line(number_list, number_of_digits):
     line_sum = 0
     partial_list = number_list
@@ -16,7 +10,6 @@ def solve_line(number_list, number_of_digits):
         partial_list = partial_list[f_idx+1:]
         line_sum *= 10
         line_sum += f
-        print(f"    {number_of_digits} - {digit} - {f} - {f_idx} - {partial_list} - {line_sum}")
     return line_sum
 def solve(data, number_of_digits):
     data_sum = 0

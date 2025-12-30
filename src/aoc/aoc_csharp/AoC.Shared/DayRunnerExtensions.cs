@@ -20,6 +20,9 @@ public static class DayRunnerExtensions
 
         Console.WriteLine($"--- Year {puzzle.Year} Day {puzzle.Day:D2} ({(useTestData ? "TEST" : "REAL")}) ---");
 
+        // Call the puzzle to "warm up" the JIT -- this one is ignored
+        puzzle.SolvePart1(input);
+        
         // 2. Execute Part 1
         ExecutePart(1, input, puzzle.SolvePart1);
 
