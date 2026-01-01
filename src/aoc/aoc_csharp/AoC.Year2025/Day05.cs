@@ -89,8 +89,10 @@ public class Day05: IDay
             
             if (freshRanges)
             {
-                var strings = line.Split("-");
-                ranges.Add(new LongRange(long.Parse(strings[0]),long.Parse(strings[1])));
+                var dashIndex = line.IndexOf('-');
+                var start = long.Parse(line[..dashIndex]);
+                var end = long.Parse(line[(dashIndex + 1)..]);
+                ranges.Add(new LongRange(start, end));
             }
             else
             {
@@ -112,13 +114,8 @@ public class Day05: IDay
     {
         var (ranges, ingredients) = CreateIngredientsDb(input);
         var simplifiedRange = SimplifyWithSweepLine(ranges);
-        // simplification seems to be a reasonable reduction, better than 50% reduction
 
-        long count = 0;
-        foreach (var range in simplifiedRange)
-        {
-            count += (range.End - range.Start + 1);
-        }
-        return count.ToString();
+        // simplification seems to be a reasonable reduction, better than 50% reduction
+        return simplifiedRange.Sum(range => (range.End - range.Start + 1)).ToString();
     }
 }
