@@ -6,3 +6,4 @@ new Day01().Run(useTestData: false);
 new Day02().Run(useTestData: false);
 new Day03().Run(useTestData: false);
 new Day04().Run(useTestData: false);
+new Day05().Run(useTestData: false);
