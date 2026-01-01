@@ -32,7 +32,7 @@ public static class DayRunnerExtensions
         Console.WriteLine();
     }
 
-    private static void ExecutePart(int partNumber, string[] input, Func<string[], string> solveMethod)
+    private static void ExecutePart(int partNumber, string[] input, Func<string[], long> solveMethod)
     {
         var sw = Stopwatch.StartNew();
         var result = solveMethod(input);

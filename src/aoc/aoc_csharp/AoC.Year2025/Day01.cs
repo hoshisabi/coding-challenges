@@ -39,15 +39,15 @@ public class Day01: IDay
     }
     
     
-    public string SolvePart1(string[] input)
+    public long SolvePart1(string[] input)
     {
         solve(input);
-        return part1Zeros.ToString();
+        return part1Zeros;
     }
 
-    public string SolvePart2(string[] input)
+    public long SolvePart2(string[] input)
     {
         solve(input);
-        return part2Zeros.ToString();
+        return part2Zeros;
     }
 }

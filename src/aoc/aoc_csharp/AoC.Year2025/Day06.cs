@@ -50,7 +50,7 @@ public class Day06: IDay
         return sum;
     }
 
-    public string SolvePart1(string[] input)
+    public long SolvePart1(string[] input)
     {
         var numbers = new List<int[]>();
         var operators = input
@@ -72,11 +72,11 @@ public class Day06: IDay
         }
 
         var sum = GenerateSum(numbers, operators);
-        return sum.ToString();
+        return sum;
     }
 
     
-    public string SolvePart2(string[] input)
+    public long SolvePart2(string[] input)
     {
         var total = 0L;
 
@@ -126,6 +126,6 @@ public class Day06: IDay
                 }
             }
         }
-        return total.ToString();
+        return total;
     }
 }

@@ -10,7 +10,7 @@ public class Day07: IDay
     public int Day => 7;
 
 
-    public string SolvePart1(string[] input)
+    public long SolvePart1(string[] input)
     {
         HashSet<int> beams = [];
         var split = 0;
@@ -31,10 +31,10 @@ public class Day07: IDay
             }
         }
 
-        return split.ToString();
+        return split;
     }
     
-    public string SolvePart2(string[] input)
+    public long SolvePart2(string[] input)
     {
         var width = input[0].Length;
         var counts = new long[width];
@@ -70,6 +70,6 @@ public class Day07: IDay
             
             counts = nextCounts;
         }
-        return counts.Sum().ToString();
+        return counts.Sum();
     }
 }

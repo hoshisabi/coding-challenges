@@ -38,13 +38,13 @@ public class Day03: IDay
     }
 
 
-    public string SolvePart1(string[] input)
+    public long SolvePart1(string[] input)
     {
-        return solveFor(input, 2).ToString();
+        return solveFor(input, 2);
     }
 
-    public string SolvePart2(string[] input)
+    public long SolvePart2(string[] input)
     {
-        return solveFor(input, 12).ToString();
+        return solveFor(input, 12);
     }
 }

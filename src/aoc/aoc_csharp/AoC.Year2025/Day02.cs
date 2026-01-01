@@ -57,13 +57,13 @@ public class Day02: IDay
         return count;
     }
 
-    public string SolvePart1(string[] input)
+    public long SolvePart1(string[] input)
     {
-        return SolveFor(input, 2).ToString();
+        return SolveFor(input, 2);
     }
 
-    public string SolvePart2(string[] input)
+    public long SolvePart2(string[] input)
     {
-        return SolveFor(input, -1).ToString();
+        return SolveFor(input, -1);
     }
 }

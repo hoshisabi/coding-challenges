@@ -69,13 +69,13 @@ public class Day04: IDay
     }
 
 
-    public string SolvePart1(string[] input)
+    public long SolvePart1(string[] input)
     {
-        return SolveFor(input, false).ToString();
+        return SolveFor(input, false);
     }
 
-    public string SolvePart2(string[] input)
+    public long SolvePart2(string[] input)
     {
-        return SolveFor(input, true).ToString();
+        return SolveFor(input, true);
     }
 }

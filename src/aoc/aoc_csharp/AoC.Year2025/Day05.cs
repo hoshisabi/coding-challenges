@@ -102,18 +102,18 @@ public class Day05: IDay
         return (ranges, ingredients);
     }
 
-    public string SolvePart1(string[] input)
+    public long SolvePart1(string[] input)
     {
         var (ranges, ingredients) = CreateIngredientsDb(input);
-        return ingredients.Count(ingredient => ingredient.Value).ToString();
+        return ingredients.Count(ingredient => ingredient.Value);
     }
 
-    public string SolvePart2(string[] input)
+    public long SolvePart2(string[] input)
     {
         var (ranges, ingredients) = CreateIngredientsDb(input);
         var simplifiedRange = SimplifyWithSweepLine(ranges);
 
         // simplification seems to be a reasonable reduction, better than 50% reduction
-        return simplifiedRange.Sum(range => (range.End - range.Start + 1)).ToString();
+        return simplifiedRange.Sum(range => (range.End - range.Start + 1));
     }
 }
