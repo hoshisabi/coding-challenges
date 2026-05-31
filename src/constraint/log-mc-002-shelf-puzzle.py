@@ -47,6 +47,13 @@
 # | Middle | Cat Food   | Beans      | Spices     |
 # | Bottom | Grog       | Veg        | Salt Pork  |
 
+# SUGGESTION TO PUZZLE AUTHOR:
+# Solutions 2 and 3 (and their reflections) differ only in whether Grog or Veg
+# occupies the corner vs. the middle of the bottom row. The official solution
+# has Veg in the middle and Grog in the corner, but no existing clue distinguishes
+# this. A hint such as "Grog goes in the corner, out of the way" or
+# "Veg stays in the middle of the bottom row" would make the solution unique.
+
 from constraint import AllDifferentConstraint, Problem
 
 ROW_LABELS = ["Top", "Middle", "Bottom"]
