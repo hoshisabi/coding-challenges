@@ -58,11 +58,15 @@ name = "coding-challenges"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "python-constraint" },
     { name = "requests" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "requests", specifier = ">=2.32.5" }]
+requires-dist = [
+    { name = "python-constraint", specifier = ">=1.4.0" },
+    { name = "requests", specifier = ">=2.32.5" },
+]
 
 [[package]]
 name = "idna"
@@ -72,6 +76,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a72335
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0e/61/66938bbb5fc52dbdf84594873d5b51fb1f7c7794e9c0f5bd885f30bc507b/idna-3.11-py3-none-any.whl", hash = "sha256:771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea", size = 71008, upload-time = "2025-10-12T14:55:18.883Z" },
 ]
+
+[[package]]
+name = "python-constraint"
+version = "1.4.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/37/8b/5f1bc2734ca611943e1d6733ee244238679f6410a10cd45ede55a61a8402/python-constraint-1.4.0.tar.bz2", hash = "sha256:501d6f17afe0032dfc6ea6c0f8acc12e44f992733f00e8538961031ef27ccb8e", size = 18416, upload-time = "2018-11-05T09:02:44.334Z" }
 
 [[package]]
 name = "requests"

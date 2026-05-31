@@ -25,27 +25,59 @@
 #    → not adjacent (including diagonals, i.e. Chebyshev distance > 1)
 # 8. "Whatever's left, just stick it in the last spot!" (Grog; no constraints)
 
-from constraint import Problem, AllDifferentConstraint
+# As written, three solutions?
+# Solution 1:
+# |        | Left       | Middle     | Right      |
+# |--------|------------|------------|------------|
+# | Top    | Grog       | Oranges    | Ale        |
+# | Middle | Dried Fish | Beans      | Salt Pork  |
+# | Bottom | Cat Food   | Veg        | Spices     |
+
+# Solution 2:
+# |        | Left       | Middle     | Right      |
+# |--------|------------|------------|------------|
+# | Top    | Dried Fish | Oranges    | Ale        |
+# | Middle | Cat Food   | Beans      | Spices     |
+# | Bottom | Veg        | Grog       | Salt Pork  |
+
+# Solution 3:
+# |        | Left       | Middle     | Right      |
+# |--------|------------|------------|------------|
+# | Top    | Dried Fish | Oranges    | Ale        |
+# | Middle | Cat Food   | Beans      | Spices     |
+# | Bottom | Grog       | Veg        | Salt Pork  |
+
+from constraint import AllDifferentConstraint, Problem
 
 ROW_LABELS = ["Top", "Middle", "Bottom"]
 
-def row(pos): return pos // 3
-def col(pos): return pos % 3
+
+def row(pos):
+    return pos // 3
+
+
+def col(pos):
+    return pos % 3
+
 
 def chebyshev_adjacent(p, q):
     return max(abs(row(p) - row(q)), abs(col(p) - col(q))) <= 1
 
+
 def manhattan(p, q):
     return abs(row(p) - row(q)) + abs(col(p) - col(q))
 
+
 # Horizontal mirror: col 0 <-> col 2, col 1 stays
-_MIRROR = {0:2, 1:1, 2:0, 3:5, 4:4, 5:3, 6:8, 7:7, 8:6}
+_MIRROR = {0: 2, 1: 1, 2: 0, 3: 5, 4: 4, 5: 3, 6: 8, 7: 7, 8: 6}
+
 
 def canonical(sol):
     """Return a key that is the same for a solution and its horizontal reflection."""
-    orig    = tuple(sorted(sol.items()))
+    orig = tuple(sorted(sol.items()))
     mirrored = tuple(sorted((item, _MIRROR[pos]) for item, pos in sol.items()))
     return min(orig, mirrored)
+
 
 def deduplicate_reflections(solutions):
     seen, unique = set(), []
@@ -56,11 +88,21 @@ def deduplicate_reflections(solutions):
             unique.append(sol)
     return unique
 
+
 def main():
     problem = Problem()
 
-    items = ["ale", "beans", "cat_food", "dried_fish", "grog",
-             "oranges", "salt_pork", "spices", "veg"]
+    items = [
+        "ale",
+        "beans",
+        "cat_food",
+        "dried_fish",
+        "grog",
+        "oranges",
+        "salt_pork",
+        "spices",
+        "veg",
+    ]
     problem.addVariables(items, range(9))
     problem.addConstraint(AllDifferentConstraint(), items)
 
@@ -72,7 +114,9 @@ def main():
 
     # 3. Beans directly below oranges (same column, one row down)
     problem.addConstraint(
-        lambda beans, oranges: col(beans) == col(oranges) and row(beans) == row(oranges) + 1,
+        lambda beans, oranges: (
+            col(beans) == col(oranges) and row(beans) == row(oranges) + 1
+        ),
         ["beans", "oranges"],
     )
 
@@ -84,13 +128,17 @@ def main():
 
     # 5. Oranges beside ale: same row, adjacent column
     problem.addConstraint(
-        lambda oranges, ale: row(oranges) == row(ale) and abs(col(oranges) - col(ale)) == 1,
+        lambda oranges, ale: (
+            row(oranges) == row(ale) and abs(col(oranges) - col(ale)) == 1
+        ),
         ["oranges", "ale"],
     )
 
     # 6. Cat food directly below dried fish (same column, one row down)
     problem.addConstraint(
-        lambda cat_food, dried_fish: col(cat_food) == col(dried_fish) and row(cat_food) == row(dried_fish) + 1,
+        lambda cat_food, dried_fish: (
+            col(cat_food) == col(dried_fish) and row(cat_food) == row(dried_fish) + 1
+        ),
         ["cat_food", "dried_fish"],
     )
 
@@ -112,18 +160,28 @@ def main():
     solutions = [s for s in solutions if sp_cf_dist(s) == max_dist]
 
     solutions = deduplicate_reflections(solutions)
-    print(f"Found {len(solutions)} solution(s) with max Salt Pork <-> Cat Food distance = {max_dist} (reflections merged)\n")
+    print(
+        f"Found {len(solutions)} solution(s) with max Salt Pork <-> Cat Food distance = {max_dist} (reflections merged)\n"
+    )
     for i, sol in enumerate(solutions, 1):
         print(f"Solution {i}:")
         print_grid(sol)
 
     print_tsv(solutions)
 
+
 LABEL = {
-    "ale": "Ale", "beans": "Beans", "cat_food": "Cat Food",
-    "dried_fish": "Dried Fish", "grog": "Grog", "oranges": "Oranges",
-    "salt_pork": "Salt Pork", "spices": "Spices", "veg": "Veg",
+    "ale": "Ale",
+    "beans": "Beans",
+    "cat_food": "Cat Food",
+    "dried_fish": "Dried Fish",
+    "grog": "Grog",
+    "oranges": "Oranges",
+    "salt_pork": "Salt Pork",
+    "spices": "Spices",
+    "veg": "Veg",
 }
+
 
 def print_tsv(solutions):
     print("\t".join(["solution", "row", "left", "middle", "right"]))
@@ -132,6 +190,7 @@ def print_tsv(solutions):
         for r, label in enumerate(ROW_LABELS):
             cells = [LABEL[grid[r * 3 + c]] for c in range(3)]
             print("\t".join([str(i), label] + cells))
+
 
 def print_grid(solution):
     grid = {v: k for k, v in solution.items()}
@@ -146,8 +205,11 @@ def print_grid(solution):
     print("|        | Left       | Middle     | Right      |")
     print("|--------|------------|------------|------------|")
     for r, cells in enumerate(rows):
-        print(f"| {ROW_LABELS[r]:<6} | {cells[0]:<10} | {cells[1]:<10} | {cells[2]:<10} |")
+        print(
+            f"| {ROW_LABELS[r]:<6} | {cells[0]:<10} | {cells[1]:<10} | {cells[2]:<10} |"
+        )
     print()
+
 
 if __name__ == "__main__":
     main()
