@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <!-- TargetFramework, ImplicitUsings, Nullable come from ../Directory.Build.props -->
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AoC.Shared\AoC.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
