@@ -12,8 +12,7 @@ particular), with Claude as a tutor rather than a solver. Started 2026-11-18.
 - **Small cases are `Checks` in code**, not files. A failing check skips the solve, since PE
   solves can take minutes.
 - **Answers live in `data/pe/answers.txt`** (gitignored), so the public repo doesn't publish
-  them. Whether to commit solutions past problem 100 is still open; for now
-  they're committed like the rest of the repo. Deferred on 2026-11-18, options in "Later" below.
+  them. See "Sharing" below.
 - **No JIT warm-up by default** (`--warmup` opts in). AoC warms up because its solves are fast.
 - **Problem 2 is the demo**, ported from `src/pe/PE2.java` (solved years ago), so the scaffold
   doesn't solve a new problem.
@@ -32,29 +31,23 @@ particular), with Claude as a tutor rather than a solver. Started 2026-11-18.
 - [ ] Dan: port a few old Java solutions (`src/pe/*.java`) to practice C# with known answers
 - [ ] Dan: start `PE/Lib/` (primes sieve, gcd, modular power, an exact fraction type) when a
       problem needs it, not ahead of time
-- [ ] Later: decide where PE solutions past problem 100 live (see below)
 - [ ] Dan: dynamic programming practice. Unsolved candidates: 76, 81, 82, 114–117 (83 is the
       same grid as 81/82 but needs a shortest-path search instead). Solved in Java already, so
       good for checking a new DP approach against an old answer: 15, 18, 31, 67.
 
-## Later: solutions past problem 100
+## Sharing: decided 2026-11-18
 
-Checked 2026-11-18: PE's public pages (About, Copyright, problem pages) state no rule on
-sharing solutions. Copyright covers problem text (CC BY-NC-SA) and forum posts. A "don't share
-outside PE, except the first 100" request is remembered from an older About/FAQ but wasn't found;
-it may be gone or members-only. Either way it was a request, widely ignored: nayuki's
-Project-Euler-solutions covers 200+ problems. So this is about preference, not a rule. Options:
+Solutions are committed like the rest of the repo, whatever the problem number. PE's public
+pages (About, Copyright, problem pages, checked 2026-11-18) state no rule on sharing solution
+code. A "don't share outside PE, except the first 100" request is remembered from an older
+About/FAQ but wasn't found; if it still exists it's members-only. Many public repos publish
+solutions, answer lists, and the full problem text.
 
-- **gitignore with exceptions.** Ignore `PE/Problems/Problem*.cs`, un-ignore `Problem00??.cs` and
-  `Problem0100.cs` (tested with `git check-ignore`: 1–100 tracked, 101+ ignored). Ignored files
-  exist on one machine only, with no backup.
-- **Private repo inside this one.** Problems past 100 (and `answers.txt`) in a gitignored
-  `PE/Private/` that's its own repo with a private remote. Syncs across machines; the runner
-  needs no change since it finds problems by type. Cost: two repos to push.
-- **Make coding-challenges private.** Least work, nothing public.
-- **Split coding-challenges into several repos** (Dan's idea), public or private each. The repo
-  was partly for visible GitHub activity, which Dan no longer considers a priority.
+What this repo still follows, as the presumed policy:
+- No answers: `data/pe/answers.txt` stays gitignored.
+- No members-only content (forum posts, bonus problems), per the Copyright page.
+- Problem text only under CC BY-NC-SA terms: link and attribute, nothing commercial. The
+  solution files carry the problem URL and title, not the statement.
 
-Already public in `src/pe`: PE102, 113, 121, 135, 162, 191, 205, 206, 215, 230. Decided
-2026-11-18: leave them and don't rewrite history. They're old solutions, and the same problems
-are solved in many other public repos. The open question covers new solutions only.
+The old solutions past 100 in `src/pe` (PE102, 113, 121, 135, 162, 191, 205, 206, 215, 230) stay,
+with no history rewrite.
