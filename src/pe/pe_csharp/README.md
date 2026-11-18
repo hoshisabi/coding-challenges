@@ -48,6 +48,6 @@ Exit code is 1 when a check fails, an answer differs from `answers.txt`, or some
   shows ✓ or ✗ against it, so `./pe.ps1 all` works as a regression run after changing shared code.
 - Input files a problem links to (e.g. problem 22's names list).
 
-Project Euler asks that answers, and solutions past problem 100, not be published. This repo is
-public on GitHub, which is why answers stay under `data/`. Solutions in `PE/Problems` are
-committed like everything else here.
+Answers stay under `data/` so the public repo doesn't publish them; finding the answer is the
+part PE players don't want handed over. Solutions in `PE/Problems` are committed like everything
+else here (see `tasks/pe-csharp.md` for what PE's site does and doesn't say about sharing).

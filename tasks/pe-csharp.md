@@ -11,8 +11,8 @@ particular), with Claude as a tutor rather than a solver. Started 2026-11-18.
   no input file in most problems, and given small cases instead of example inputs.
 - **Small cases are `Checks` in code**, not files. A failing check skips the solve, since PE
   solves can take minutes.
-- **Answers live in `data/pe/answers.txt`** (gitignored). The repo is public, and PE asks that
-  answers not be published. Whether to commit solutions past problem 100 is still open; for now
+- **Answers live in `data/pe/answers.txt`** (gitignored), so the public repo doesn't publish
+  them. Whether to commit solutions past problem 100 is still open; for now
   they're committed like the rest of the repo. Deferred on 2026-11-18, options in "Later" below.
 - **No JIT warm-up by default** (`--warmup` opts in). AoC warms up because its solves are fast.
 - **Problem 2 is the demo**, ported from `src/pe/PE2.java` (solved years ago), so the scaffold
@@ -39,8 +39,11 @@ particular), with Claude as a tutor rather than a solver. Started 2026-11-18.
 
 ## Later: solutions past problem 100
 
-PE asks that solutions past 100 not be published, and this repo is public. Options, as of
-2026-11-18:
+Checked 2026-11-18: PE's public pages (About, Copyright, problem pages) state no rule on
+sharing solutions. Copyright covers problem text (CC BY-NC-SA) and forum posts. A "don't share
+outside PE, except the first 100" request is remembered from an older About/FAQ but wasn't found;
+it may be gone or members-only. Either way it was a request, widely ignored: nayuki's
+Project-Euler-solutions covers 200+ problems. So this is about preference, not a rule. Options:
 
 - **gitignore with exceptions.** Ignore `PE/Problems/Problem*.cs`, un-ignore `Problem00??.cs` and
   `Problem0100.cs` (tested with `git check-ignore`: 1–100 tracked, 101+ ignored). Ignored files
