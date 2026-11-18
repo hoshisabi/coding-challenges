@@ -52,5 +52,6 @@ PE asks that solutions past 100 not be published, and this repo is public. Optio
 - **Split coding-challenges into several repos** (Dan's idea), public or private each. The repo
   was partly for visible GitHub activity, which Dan no longer considers a priority.
 
-Already public in `src/pe`: PE102, 113, 121, 135, 162, 191, 205, 206, 215, 230. Leaving,
-moving, or rewriting history to remove them is part of the same decision.
+Already public in `src/pe`: PE102, 113, 121, 135, 162, 191, 205, 206, 215, 230. Decided
+2026-11-18: leave them and don't rewrite history. They're old solutions, and the same problems
+are solved in many other public repos. The open question covers new solutions only.
